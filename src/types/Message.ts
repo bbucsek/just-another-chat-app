@@ -1,7 +1,7 @@
 type Message = {
     user: string
     message: string
-    data: Date
+    date: Date
 }
 
 export default Message

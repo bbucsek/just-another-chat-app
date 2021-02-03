@@ -1,12 +1,12 @@
 import React from 'react'
-import RoomItem from '../Room/RoomItem'
+import RoomItem from '../RoomItem/RoomItem'
 import { Container } from './styles'
 
 const RoomList = () => {
 
     const roomExample1 = {
         id: 'what1',
-        name: 'what1',
+        name: 'whatasdasda asdasdasdasdasd1asdas dasdasdasd1asda sdasdasdasd1asdasdasdasdasd1',
         lastMSG: 'whaaat1'
     }
 

@@ -6,6 +6,7 @@ export const Container = styled.div`
     padding: 1rem;
     border-bottom: solid #adb5bd 1px;
     cursor: pointer;
+    height: 10%;
 
     &:hover {
         background-color: ${({ theme }) => theme.colors.disabled}
@@ -16,19 +17,27 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 1rem;
+    
 `
 
 export const Image = styled.img`
-    width: 15%;
+    max-width:100%;
+    max-height:100%;
     border-radius: 50%;
 `
 
 export const RoomTitle = styled.div`
-    font-size: 2rem;
+    font-size: 1.2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 `
 
 export const LastMessage = styled.div`
-    font-size: 1rem;
-    color: ${({ theme }) => theme.colors.lightGrey}
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.colors.lightGrey};
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 
 `
