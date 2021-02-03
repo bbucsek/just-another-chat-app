@@ -2,5 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display: flex;
-    flex: 0.75;
+    width: 75vw;
+    background-color: ${({ theme }) => theme.colors.disabled}
 `

@@ -5,10 +5,12 @@ const blueTheme = {
     colors: {
       lightBlue: '#e0fbfc',
       blue: '#98c1d9',
-      disabled: '#adb5bd',
+      disabled: '#e9ecef',
       darkGrey: '#293241',
       darkBlue: '#3d5a80',
-      orange: '#ee6c4d'
+      orange: '#ee6c4d',
+      lightGrey: '#6c757d',
+      white: '#f8f9fa'
 
     },
     background: {

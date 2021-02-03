@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import './App.css';
 import { useSelector, useDispatch } from 'react-redux'
 import {
   selectCurrentUser,
-  selectAuthLoading,
 } from './store/slices/auth/selectors'
 import { authAsyncActions } from './store/slices/auth/slice'
 import Login from './components/Login'
