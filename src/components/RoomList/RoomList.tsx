@@ -1,5 +1,6 @@
 import React from 'react'
 import { signOut } from '../../services/firestore/authentication'
+import { Container } from './styles'
 
 const RoomList = () => {
 
@@ -8,9 +9,9 @@ const RoomList = () => {
     }
 
     return (
-        <div onClick={logOut}>
+        <Container>
             roomlist
-        </div>
+        </Container>
     )
 }
 

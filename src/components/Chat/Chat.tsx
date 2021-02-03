@@ -1,12 +1,12 @@
 import React from 'react'
 import { Container } from './styles'
 
-const Room = () => {
+const Chat = () => {
     return (
         <Container>
-            
+            Chat
         </Container>
     )
 }
 
-export default Room
+export default Chat
