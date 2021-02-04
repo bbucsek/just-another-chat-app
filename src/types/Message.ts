@@ -1,7 +1,8 @@
 type Message = {
+    id: string
     user: string
     message: string
-    timeStamp: Date
+    timeStamp: any
 }
 
 export default Message

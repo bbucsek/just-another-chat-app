@@ -7,11 +7,15 @@ type MessageProps = {
 }
 
 const MessageItem = ({ message }: MessageProps) => {
+
+    console.log(new Date(message.timeStamp?.toDate()).toUTCString())
     return (
         <Container>
             <Sender>{message.user}</Sender>
             {message.message}
-            <TimeStamp>{message.timeStamp.toLocaleTimeString()}</TimeStamp>
+            <TimeStamp>
+                {new Date(message.timeStamp?.toDate()).toUTCString()}
+            </TimeStamp>
         </Container>
     )
 }

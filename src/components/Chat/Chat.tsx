@@ -8,18 +8,13 @@ import InputField from '../InputField'
 import MessageItem from './MessageItem'
 import { useParams } from 'react-router-dom'
 import { Container, Header, RoomName, Wrapper, Image } from './styles'
-
-
-const msg1: Message = {
-    user: 'jozsi',
-    message: 'helllllllo asdasdasd',
-    timeStamp: new Date(),
-}
+import { selectMessages } from '../../store/slices/messages/selectors'
 
 const Chat = () => {
     const { id } = useParams<{ id: string }>()
     const roomName = useSelector(selectRoomName)
     const roomId = useSelector(selectRoomId)
+    const messages = useSelector(selectMessages)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -27,6 +22,9 @@ const Chat = () => {
             return
         }
         dispatch(asyncMessageActions.subscribeToRoomMessages(id))
+        return function cleanUp() {
+            dispatch(asyncMessageActions.unsubscribeFromRoomMessages())
+        }
     }, [id, dispatch])
 
     return (
@@ -38,8 +36,9 @@ const Chat = () => {
                 </RoomName>
             </Header>
             <Wrapper>
-                <MessageItem message={msg1} />
-                <MessageItem message={msg1} />
+                {messages?.map((msg: Message) => {
+                    return <MessageItem key={msg.id} message={msg} />
+                })}
             </Wrapper>
             <InputField placeholder='add new message' type={InputType.MESSAGE}/>
         </Container>

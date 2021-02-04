@@ -38,10 +38,24 @@ export const subscribeToRoomMessages = createAsyncThunk<
       }
 })
 
+export const unsubscribeFromRoomMessages = createAsyncThunk(
+  'songs/unsubscribeFromRoomMessages',
+  async (_playload, thunkApi) => {
+    try {
+      roomsApi.unsubscribeFromMessages()
+      return 'unsubscribed_from_room_messages'
+    } catch (error) {
+      return thunkApi.rejectWithValue('failed_to_unsubscribe_from_room_messages')
+    }
+  }
+)
+
+
 export default slice.reducer
 
 export const messageActions = slice.actions
 
 export const asyncMessageActions = {
     subscribeToRoomMessages,
+    unsubscribeFromRoomMessages,
 }

@@ -45,6 +45,7 @@ function subscribeToRoomMessages(
     .collection('rooms')
     .doc(roomId)
     .collection('messages')
+    .orderBy('timeStamp', 'asc')
     .onSnapshot(observer)
 }
 
