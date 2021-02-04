@@ -12,7 +12,7 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: grid;
   place-items: center;
-  background-color: #98c1d9;
+  background-color: #e9ecef;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%), radial-gradient(at 50% 0%, rgba(255, 255, 255, 0.10) 0%, rgba(0, 0, 0, 0.50) 50%);
   background-blend-mode: soft-light, screen;
   height: 100vh;

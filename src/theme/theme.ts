@@ -10,8 +10,7 @@ const blueTheme = {
       darkBlue: '#3d5a80',
       orange: '#ee6c4d',
       lightGrey: '#6c757d',
-      white: '#f8f9fa'
-
+      white: '#f8f9fa',
     },
     background: {
       transparent: 'rgba(0, 0, 0, 0.1)',
