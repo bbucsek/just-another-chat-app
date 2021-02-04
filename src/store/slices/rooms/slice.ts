@@ -69,7 +69,7 @@ export const unsubscribeFromRooms = createAsyncThunk(
         return thunkApi.rejectWithValue('failed_to_unsubscribe_from_rooms')
       }
     }
-  )
+)
 
 export default slice.reducer
 

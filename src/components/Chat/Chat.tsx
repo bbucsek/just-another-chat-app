@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import InputType from '../../types/InputType'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectRoomName, selectRoomId } from '../../store/slices/rooms/selectors'
+import { asyncMessageActions } from '../../store/slices/messages/slice'
 import Message from '../../types/Message'
 import InputField from '../InputField'
 import MessageItem from './MessageItem'
@@ -19,10 +20,14 @@ const Chat = () => {
     const { id } = useParams<{ id: string }>()
     const roomName = useSelector(selectRoomName)
     const roomId = useSelector(selectRoomId)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log(id)
-    }, [id])
+        if (!id) {
+            return
+        }
+        dispatch(asyncMessageActions.subscribeToRoomMessages(id))
+    }, [id, dispatch])
 
     return (
         <Container>
