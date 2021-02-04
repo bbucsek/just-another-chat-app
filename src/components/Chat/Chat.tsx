@@ -1,31 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import InputType from '../../types/InputType'
+import { useSelector } from 'react-redux'
+import { selectRoomName, selectRoomId } from '../../store/slices/rooms/selectors'
 import Message from '../../types/Message'
 import InputField from '../InputField'
 import MessageItem from './MessageItem'
+import { useParams } from 'react-router-dom'
 import { Container, Header, RoomName, Wrapper, Image } from './styles'
 
 
 const msg1: Message = {
     user: 'jozsi',
     message: 'helllllllo asdasdasd',
-    date: new Date(),
-
-}
-
-const roomExample1 = {
-    id: 'what1',
-    name: 'whatasdasda asdasdasdasdasd1asdas dasdasdasd1asda sdasdasdasd1asdasdasdasdasd1',
-    lastMSG: 'whaaat1'
+    timeStamp: new Date(),
 }
 
 const Chat = () => {
+    const { id } = useParams<{ id: string }>()
+    const roomName = useSelector(selectRoomName)
+    const roomId = useSelector(selectRoomId)
+
+    useEffect(() => {
+        console.log(id)
+    }, [id])
+
     return (
         <Container>
             <Header>
-                <Image src={`https://avatars.dicebear.com/api/human/${roomExample1.id}.svg`}/>
+                <Image src={`https://avatars.dicebear.com/api/human/${roomId}.svg`}/>
                 <RoomName>
-                    {roomExample1.name}
+                    {roomName}
                 </RoomName>
             </Header>
             <Wrapper>

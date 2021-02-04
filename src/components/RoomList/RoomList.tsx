@@ -14,7 +14,7 @@ const RoomList = () => {
         <Container>
             <InputField placeholder='create new room' type={InputType.ROOM}/>
             {rooms?.map((room: Room) => {
-                return <RoomItem room={room} />
+                return <RoomItem key={room.id} room={room} />
             })}
         </Container>
     )

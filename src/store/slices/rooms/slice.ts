@@ -6,6 +6,7 @@ import roomsApi from '../../../services/firestore/roomsApi'
 
 const initialState: RoomState = {
     rooms: null,
+    currentRoom: null,
     errorMessage: null,
     loading: {
         createRoom: false,
@@ -14,18 +15,13 @@ const initialState: RoomState = {
     },
 }
 
-type RoomData = {
-    name: string,
-    id: string,
-}
-
 export const createRoom = createAsyncThunk<
 string,
 string,
 { state: RootState }
 >('rooms/createRoom', async (roomName, thunkApi) => {
     const newRoom: Omit<Room, 'id'> = {
-        name: roomName
+        name: roomName,
     }
     try {
         roomsApi.createRoom(newRoom)
@@ -43,6 +39,9 @@ const slice = createSlice({
         state.rooms = action.payload
         state.loading.getRooms = false
       },
+      SET_CURRENT_ROOM: (state, action: PayloadAction<Room | null>) => {
+        state.currentRoom = action.payload
+      }
     },
   })
   

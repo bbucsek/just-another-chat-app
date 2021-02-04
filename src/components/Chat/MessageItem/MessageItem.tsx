@@ -11,7 +11,7 @@ const MessageItem = ({ message }: MessageProps) => {
         <Container>
             <Sender>{message.user}</Sender>
             {message.message}
-            <TimeStamp>{message.date.toLocaleTimeString()}</TimeStamp>
+            <TimeStamp>{message.timeStamp.toLocaleTimeString()}</TimeStamp>
         </Container>
     )
 }
