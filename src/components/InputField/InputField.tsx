@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import InputType from '../../types/InputType'
 import { Container, Form } from './styles'
 import { asyncRoomsActions } from '../../store/slices/rooms/slice'
+import { asyncMessageActions } from '../../store/slices/messages/slice'
 
 type InputProps = {
     placeholder: string
@@ -23,7 +24,7 @@ const InputField = ({placeholder, type}: InputProps) => {
             dispatch(asyncRoomsActions.createRoom(value))
         }
         if (type === 'message') {
-            alert(value)
+            dispatch(asyncMessageActions.addMessage(value))
         }
         setValue('')
     }

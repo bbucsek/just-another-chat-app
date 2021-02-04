@@ -53,10 +53,19 @@ function createRoom(room: Omit<Room, 'id'>) {
   return database.collection('rooms').add(room)
 }
 
+async function addMessage(message: Omit<Message, 'id'>, roomId: string) {
+  await database
+  .collection('rooms')
+  .doc(roomId)
+  .collection('messages')
+  .add(message)
+}
+
 export default {
   unsubscribeFromRooms,
   subscribeToRooms,
   createRoom,
   subscribeToRoomMessages,
   unsubscribeFromMessages,
+  addMessage,
 }
