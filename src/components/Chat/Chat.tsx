@@ -1,4 +1,5 @@
 import React from 'react'
+import InputType from '../../types/InputType'
 import Message from '../../types/Message'
 import InputField from '../InputField'
 import MessageItem from './MessageItem'
@@ -31,7 +32,7 @@ const Chat = () => {
                 <MessageItem message={msg1} />
                 <MessageItem message={msg1} />
             </Wrapper>
-            <InputField />
+            <InputField placeholder='add new message' type={InputType.MESSAGE}/>
         </Container>
     )
 }

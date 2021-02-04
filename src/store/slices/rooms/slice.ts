@@ -14,6 +14,27 @@ const initialState: RoomState = {
     },
 }
 
+type RoomData = {
+    name: string,
+    id: string,
+}
+
+export const createRoom = createAsyncThunk<
+string,
+string,
+{ state: RootState }
+>('rooms/createRoom', async (roomName, thunkApi) => {
+    const newRoom: Omit<Room, 'id'> = {
+        name: roomName
+    }
+    try {
+        roomsApi.createRoom(newRoom)
+        return 'room_created'
+    } catch (error) {
+        return thunkApi.rejectWithValue('cannot_create_room')
+    }
+})
+
 const slice = createSlice({
     name: 'rooms',
     initialState,
@@ -58,4 +79,5 @@ export const roomsActions = slice.actions
 export const asyncRoomsActions = {
     subscribeToRooms,
     unsubscribeFromRooms,
+    createRoom,
 }

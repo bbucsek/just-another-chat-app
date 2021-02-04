@@ -1,32 +1,21 @@
 import React from 'react'
 import RoomItem from '../RoomItem/RoomItem'
-import { Container } from './styles'
+import { Container, Header } from './styles'
+import { useSelector } from 'react-redux'
+import { selectAllRooms } from '../../store/slices/rooms/selectors'
+import Room from '../../types/Room'
+import InputField from '../InputField'
+import InputType from '../../types/InputType'
 
 const RoomList = () => {
-
-    const roomExample1 = {
-        id: 'what1',
-        name: 'whatasdasda asdasdasdasdasd1asdas dasdasdasd1asda sdasdasdasd1asdasdasdasdasd1',
-        lastMSG: 'whaaat1'
-    }
-
-    const roomExample2 = {
-        id: 'what2',
-        name: 'what2',
-        lastMSG: 'whaaat1'
-    }
-
-    const roomExample3 = {
-        id: 'what3',
-        name: 'what3',
-        lastMSG: 'whaaat1'
-    }
+    const rooms = useSelector(selectAllRooms)
 
     return (
         <Container>
-            <RoomItem room={roomExample1}/>
-            <RoomItem room={roomExample2}/>
-            <RoomItem room={roomExample3}/>
+            <InputField placeholder='create new room' type={InputType.ROOM}/>
+            {rooms?.map((room: Room) => {
+                return <RoomItem room={room} />
+            })}
         </Container>
     )
 }

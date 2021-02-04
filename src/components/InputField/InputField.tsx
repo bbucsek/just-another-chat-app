@@ -1,25 +1,43 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import InputType from '../../types/InputType'
 import { Container, Form } from './styles'
+import { asyncRoomsActions } from '../../store/slices/rooms/slice'
 
-const InputField = () => {
+type InputProps = {
+    placeholder: string
+    type: InputType
+}
 
-    const [message, setMessage] = useState('')
+const InputField = ({placeholder, type}: InputProps) => {
 
-    const submitMessage = (e: React.FormEvent) => {
+    const [value, setValue] = useState('')
+    const dispatch = useDispatch()
+
+    const submitValue = (e: React.FormEvent) => {
         e.preventDefault()
-        alert(message)
+        if (!value) {
+            return
+        }
+        if (type === 'room') {
+            dispatch(asyncRoomsActions.createRoom(value))
+        }
+        if (type === 'message') {
+            alert(value)
+        }
+        setValue('')
     }
 
     return (
         <Container>
             <Form>
                 <input
-                    value={message}
-                    onChange={e => setMessage(e.target.value)}
-                    placeholder='type a message'
+                    value={value}
+                    onChange={e => setValue(e.target.value)}
+                    placeholder={placeholder}
                     type='text' 
                 />
-                <button type='submit' onClick={submitMessage} >send a message</button>
+                <button type='submit' onClick={submitValue} >send a message</button>
             </Form>
         </Container>
     )

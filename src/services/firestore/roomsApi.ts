@@ -23,7 +23,12 @@ function unsubscribeFromRooms() {
     }
 }
 
+function createRoom(room: Omit<Room, 'id'>) {
+  return database.collection('rooms').add(room)
+}
+
 export default {
   unsubscribeFromRooms,
   subscribeToRooms,
+  createRoom,
 }

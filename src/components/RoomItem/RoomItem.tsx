@@ -14,9 +14,6 @@ const RoomItem = ({ room }: RoomProps) => {
                 <RoomTitle>
                     {room.name}
                 </RoomTitle>
-                <LastMessage>
-                    {room.lastMSG}
-                </LastMessage>
             </Wrapper>
         </Container>
     )

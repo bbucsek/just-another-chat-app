@@ -10,3 +10,9 @@ export const Container = styled.div`
     border-right: solid #adb5bd 1px;
 
 `
+
+export const Header = styled.div`
+    display: flex;
+    height: 10%;
+    border-bottom: solid #adb5bd 1px;
+`
