@@ -7,7 +7,6 @@ type MessageProps = {
 }
 
 const MessageItem = ({ message }: MessageProps) => {
-    console.log(message.date)
     return (
         <Container>
             <Sender>{message.user}</Sender>
