@@ -34,6 +34,17 @@ string,
 const slice = createSlice({
     name: 'rooms',
     initialState,
+    extraReducers: {
+      [createRoom.pending.type]: (state) => {
+        state.loading.createRoom = true
+      },
+      [createRoom.fulfilled.type]: (state) => {
+        state.loading.createRoom = false
+      },
+      [createRoom.rejected.type]: (state) => {
+        state.loading.createRoom = false
+      },
+    },
     reducers: {
       SET_ROOMS: (state, action: PayloadAction<Room[] | null>) => {
         state.rooms = action.payload

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../../store/slices/auth/selectors'
-import firebase from 'firebase'
 import Message from '../../../types/Message'
 import { Container, Sender, TimeStamp } from './styles'
 

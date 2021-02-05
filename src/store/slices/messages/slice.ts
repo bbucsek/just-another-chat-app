@@ -7,7 +7,6 @@ import RootState from '../../RootState'
 import roomsApi from '../../../services/firestore/roomsApi'
 import Message from '../../../types/Message'
 
-
 const initialState: MessagesState = {
     messages: null,
     errorMessage: null,
