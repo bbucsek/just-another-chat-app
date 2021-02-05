@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.div<{ ownMessage: boolean }>`
     display: flex;
     margin: 0 2rem;
     position: relative;
@@ -11,6 +11,7 @@ export const Container = styled.div`
     border-radius: 10px;
     width: fit-content;
     margin-top: 30px;
+    align-self: ${({ ownMessage }) => ownMessage ? "flex-end" : "flex-start"};
 `
 
 export const Sender = styled.div`

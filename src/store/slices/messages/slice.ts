@@ -29,6 +29,7 @@ string,
     }
     const nemMessage: Omit<Message, 'id'> = {
         user: currentUser.name,
+        userId: currentUser.id,
         message,
         timeStamp: firebase.firestore.FieldValue.serverTimestamp()
     }
