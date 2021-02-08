@@ -38,7 +38,11 @@ const InputField = ({placeholder, type}: InputProps) => {
                     placeholder={placeholder}
                     type='text' 
                 />
-                <button type='submit' onClick={submitValue} >send a message</button>
+                <button 
+                    type='submit' 
+                    onClick={submitValue}
+                    data-testid="input-form-button" 
+                />
             </Form>
         </Container>
     )
