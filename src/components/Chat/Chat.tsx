@@ -26,7 +26,7 @@ const Chat = () => {
             dispatch(asyncMessageActions.unsubscribeFromRoomMessages())
         }
     }, [id, dispatch])
-
+    
     return (
         <Container>
             <Header>

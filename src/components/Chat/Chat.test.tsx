@@ -1,11 +1,10 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
 import thunk from 'redux-thunk'
 import configureMockStore from 'redux-mock-store'
 import { Provider } from 'react-redux'
 import * as themes from '../../theme/theme'
-import MessageItem from './MessageItem'
 import Message from '../../types/Message'
 import User from '../../types/User'
 import { selectRoomName, selectRoomId } from '../../store/slices/rooms/selectors'
@@ -59,15 +58,16 @@ jest.mock('react-router-dom', () => ({
     })
 }))
 
+selectRoomName.mockImplementation(() => testRoom.name)
+selectRoomId.mockImplementation(() => testRoom.id)
+selectMessages.mockImplementation(() => [testMessage])
+
 describe('Chat component', () => {
     beforeEach(() => {
       store.clearActions()
     })
   
     it('renders without crashing', () => {
-        selectRoomName.mockImplementationOnce(() => testRoom.name)
-        selectRoomId.mockImplementationOnce(() => testRoom.id)
-        selectMessages.mockImplementationOnce(() => [testMessage])
         render(
         <Provider store={store}>
             <ThemeProvider theme={themes.default}>
@@ -78,9 +78,6 @@ describe('Chat component', () => {
     })
 
     it('dispatches the subscribe action when component mounts', () => {
-        selectRoomName.mockImplementationOnce(() => testRoom.name)
-        selectRoomId.mockImplementationOnce(() => testRoom.id)
-        selectMessages.mockImplementationOnce(() => [testMessage])
         const { unmount } = render(
         <Provider store={store}>
             <ThemeProvider theme={themes.default}>
@@ -95,9 +92,6 @@ describe('Chat component', () => {
     })
 
     it('dispatches actions to unsubscribe from songs and room on unmounting', () => {
-        selectRoomName.mockImplementationOnce(() => testRoom.name)
-        selectRoomId.mockImplementationOnce(() => testRoom.id)
-        selectMessages.mockImplementationOnce(() => [testMessage])
         const { unmount } = render(
         <Provider store={store}>
             <ThemeProvider theme={themes.default}>
@@ -112,9 +106,6 @@ describe('Chat component', () => {
     })
 
     it('dispatch the right action when the user send a message', async () => {
-        selectRoomName.mockImplementationOnce(() => testRoom.name)
-        selectRoomId.mockImplementationOnce(() => testRoom.id)
-        selectMessages.mockImplementationOnce(() => [testMessage])
         const { queryByText, getByPlaceholderText, getByTestId  } = render(
         <Provider store={store}>
             <ThemeProvider theme={themes.default}>
@@ -133,9 +124,6 @@ describe('Chat component', () => {
     })
 
     it('dispatch the action with the right data when the user send a message', async () => {
-        selectRoomName.mockImplementationOnce(() => testRoom.name)
-        selectRoomId.mockImplementationOnce(() => testRoom.id)
-        selectMessages.mockImplementationOnce(() => [testMessage])
         const { queryByText, getByPlaceholderText, getByTestId  } = render(
         <Provider store={store}>
             <ThemeProvider theme={themes.default}>
