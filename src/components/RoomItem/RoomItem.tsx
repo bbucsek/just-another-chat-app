@@ -1,9 +1,10 @@
 import React from 'react'
 import Room from '../../types/Room'
 import { useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Container, Image, RoomTitle, Wrapper } from './styles'
 import { roomsActions } from '../../store/slices/rooms/slice'
+import { selectRoomId } from '../../store/slices/rooms/selectors'
 
 type RoomProps = {
     room: Room
@@ -12,6 +13,8 @@ type RoomProps = {
 const RoomItem = ({ room }: RoomProps) => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const currentRoomId = useSelector(selectRoomId)
+    const activeRoom = currentRoomId === room.id
 
     const openRoom = () => {
         dispatch(roomsActions.SET_CURRENT_ROOM(room))
@@ -19,7 +22,10 @@ const RoomItem = ({ room }: RoomProps) => {
     }
 
     return (
-        <Container onClick={openRoom}>
+        <Container
+            onClick={openRoom}
+            active={activeRoom}
+        >
             <Image src={`https://avatars.dicebear.com/api/human/${room.id}.svg`}/>
             <Wrapper>
                 <RoomTitle>

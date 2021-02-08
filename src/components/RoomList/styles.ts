@@ -27,7 +27,7 @@ export const LoadingContainer = styled.div`
 `
 
 export const Loading = styled.div`
-    border: 16px solid #f3f3f3; 
+    border: 16px solid  ${({ theme }) => theme.colors.disabled}; 
     border-top: 16px solid ${({ theme }) => theme.colors.blue}; 
     border-radius: 50%;
     width: 120px;

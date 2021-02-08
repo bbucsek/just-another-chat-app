@@ -31,43 +31,18 @@ string,
     }
 })
 
-const slice = createSlice({
-    name: 'rooms',
-    initialState,
-    extraReducers: {
-      [createRoom.pending.type]: (state) => {
-        state.loading.createRoom = true
-      },
-      [createRoom.fulfilled.type]: (state) => {
-        state.loading.createRoom = false
-      },
-      [createRoom.rejected.type]: (state) => {
-        state.loading.createRoom = false
-      },
-    },
-    reducers: {
-      SET_ROOMS: (state, action: PayloadAction<Room[] | null>) => {
-        state.rooms = action.payload
-        state.loading.getRooms = false
-      },
-      SET_CURRENT_ROOM: (state, action: PayloadAction<Room | null>) => {
-        state.currentRoom = action.payload
-      }
-    },
-  })
-  
 export const subscribeToRooms = createAsyncThunk(
-    'rooms/subscribeToRooms', 
-    async (payload, thunkApi) => {
-        try {
-            roomsApi.subscribeToRooms((rooms: Room[]) => {
-                thunkApi.dispatch(slice.actions.SET_ROOMS(rooms))
-            })
-            return 'subscribed_to_rooms'
-        } catch (error) {
-        return thunkApi.rejectWithValue('failed_to_subscribe_to_rooms')
-        }
-    }
+  'rooms/subscribeToRooms', 
+  async (payload, thunkApi) => {
+      try {
+          roomsApi.subscribeToRooms((rooms: Room[]) => {
+              thunkApi.dispatch(slice.actions.SET_ROOMS(rooms))
+          })
+          return 'subscribed_to_rooms'
+      } catch (error) {
+      return thunkApi.rejectWithValue('failed_to_subscribe_to_rooms')
+      }
+  }
 )
 
 export const unsubscribeFromRooms = createAsyncThunk(
@@ -81,6 +56,40 @@ export const unsubscribeFromRooms = createAsyncThunk(
       }
     }
 )
+
+const slice = createSlice({
+    name: 'rooms',
+    initialState,
+    extraReducers: {
+      [createRoom.pending.type]: (state) => {
+        state.loading.createRoom = true
+      },
+      [createRoom.fulfilled.type]: (state) => {
+        state.loading.createRoom = false
+      },
+      [createRoom.rejected.type]: (state) => {
+        state.loading.createRoom = false
+      },
+      [subscribeToRooms.pending.type]: (state) => {
+        state.loading.createRoom = true
+      },
+      [subscribeToRooms.fulfilled.type]: (state) => {
+        state.loading.createRoom = false
+      },
+      [subscribeToRooms.rejected.type]: (state) => {
+        state.loading.createRoom = false
+      },
+    },
+    reducers: {
+      SET_ROOMS: (state, action: PayloadAction<Room[] | null>) => {
+        state.rooms = action.payload
+        state.loading.getRooms = false
+      },
+      SET_CURRENT_ROOM: (state, action: PayloadAction<Room | null>) => {
+        state.currentRoom = action.payload
+      }
+    },
+  })
 
 export default slice.reducer
 

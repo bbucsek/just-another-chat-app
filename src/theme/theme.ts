@@ -5,7 +5,8 @@ const blueTheme = {
     colors: {
       lightBlue: '#e0fbfc',
       blue: '#98c1d9',
-      disabled: '#e9ecef',
+      activeRoom: '#e9ecef',
+      disabled: '#d8dde3',
       darkGrey: '#293241',
       darkBlue: '#3d5a80',
       orange: '#ee6c4d',

@@ -6,4 +6,4 @@ export const selectRoomName = (state: RootState) => state.rooms.currentRoom?.nam
 
 export const selectRoomId = (state: RootState) => state.rooms.currentRoom?.id
 
-export const selectRoomsLoading = (state: RootState) => state.rooms.loading
+export const selectRoomsLoading = (state: RootState) => state.rooms.loading.getRooms
