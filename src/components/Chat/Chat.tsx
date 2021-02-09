@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import InputType from '../../types/InputType'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectRoomName, selectRoomId } from '../../store/slices/rooms/selectors'
@@ -16,6 +16,19 @@ const Chat = () => {
     const roomId = useSelector(selectRoomId)
     const messages = useSelector(selectMessages)
     const dispatch = useDispatch()
+    const messagesEndRef = useRef<null | HTMLDivElement>(null)
+
+    const scrollToBottom = () => {
+        if (!messagesEndRef.current) {
+            return 
+        }
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+      }
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [messages]);
+    
 
     useEffect(() => {
         if (!id) {
@@ -39,6 +52,7 @@ const Chat = () => {
                 {messages?.map((msg: Message) => {
                     return <MessageItem key={msg.id} message={msg} />
                 })}
+                <div ref={messagesEndRef} />
             </Wrapper>
             <InputField placeholder='add new message' type={InputType.MESSAGE}/>
         </Container>
