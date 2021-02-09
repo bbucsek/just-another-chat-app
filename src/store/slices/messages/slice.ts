@@ -26,6 +26,8 @@ string,
     if (!roomId || !currentUser) {
       return thunkApi.rejectWithValue('noo_room_id')
     }
+    const timeStamp = firebase.firestore.FieldValue.serverTimestamp()
+    console.log(timeStamp)
     const nemMessage: Omit<Message, 'id'> = {
         user: currentUser.name,
         userId: currentUser.id,

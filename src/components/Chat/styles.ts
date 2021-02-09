@@ -21,6 +21,7 @@ export const Header = styled.div`
     height: 10%;
     padding: 1rem;
     border-bottom: ${({ theme }) => theme.colors.borderGrey} solid 1px;
+    border-top: ${({ theme }) => theme.colors.borderGrey} solid 1px;
 `
 
 export const RoomName = styled.div`

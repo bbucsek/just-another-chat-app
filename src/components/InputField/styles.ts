@@ -5,6 +5,7 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 10%;
+    border-top: ${({ theme }) => theme.colors.borderGrey} solid 1px;
     border-bottom: ${({ theme }) => theme.colors.borderGrey} solid 1px;
 `
 

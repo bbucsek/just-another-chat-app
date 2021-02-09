@@ -36,7 +36,15 @@ function subscribeToRoomMessages(
   callback: (messages: Message[]) => void, roomId: string) {
   const observer = (snapshot: any) => {
     const messages = snapshot.docs.map((doc: any) => {
-      return { id: doc.id, ...doc.data() }
+      const data = { id: doc.id, ...doc.data() }
+      const msg: Message = {
+        id: data.id,
+        user: data.user,
+        userId: data.userId,
+        message: data.message,
+        timeStamp: new Date(data.timeStamp?.toDate()).toLocaleTimeString(),
+      } 
+      return msg
     })
     callback(messages)
   }
@@ -54,11 +62,11 @@ function createRoom(room: Omit<Room, 'id'>) {
 }
 
 async function addMessage(message: Omit<Message, 'id'>, roomId: string) {
-  await database
-  .collection('rooms')
-  .doc(roomId)
-  .collection('messages')
-  .add(message)
+  database
+    .collection('rooms')
+    .doc(roomId)
+    .collection('messages')
+    .add(message)
 }
 
 export default {
