@@ -12,6 +12,7 @@ const blueTheme = {
       orange: '#ee6c4d',
       lightGrey: '#6c757d',
       white: '#f8f9fa',
+      borderGrey: '#adb5bd',
     },
     background: {
       transparent: 'rgba(0, 0, 0, 0.1)',

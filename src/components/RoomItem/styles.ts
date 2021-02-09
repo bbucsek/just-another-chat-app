@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div<{ active: boolean}>`
     display: flex;
     padding: 0.5rem;
-    border-bottom: solid #adb5bd 1px;
+    border-bottom: ${({ theme }) => theme.colors.borderGrey} solid 1px;
     cursor: pointer;
     height: 10%;
     background-color: ${({ active, theme }) => active ? theme.colors.activeRoom : theme.colors.white};

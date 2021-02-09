@@ -20,10 +20,10 @@ const InputField = ({placeholder, type}: InputProps) => {
         if (!value) {
             return
         }
-        if (type === 'room') {
+        if (type === InputType.ROOM) {
             dispatch(asyncRoomsActions.createRoom(value))
         }
-        if (type === 'message') {
+        if (type === InputType.MESSAGE) {
             dispatch(asyncMessageActions.addMessage(value))
         }
         setValue('')

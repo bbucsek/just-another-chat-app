@@ -20,6 +20,10 @@ export const Sender = styled.div`
     font-weight: 800;
     font-size: xx-small;
     color: ${({ theme }) => theme.colors.darkGrey};
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 `
 
 export const TimeStamp = styled.div`

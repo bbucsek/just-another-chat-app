@@ -5,7 +5,7 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     height: 10%;
-    border-top: solid #adb5bd 1px;
+    border-bottom: ${({ theme }) => theme.colors.borderGrey} solid 1px;
 `
 
 export const Form = styled.form`
@@ -17,6 +17,10 @@ export const Form = styled.form`
         border-radius: 30px;
         padding: 10px;
         border: none;
+
+        &:focus-visible {
+            outline: none;
+    }
     }
 
     > button {

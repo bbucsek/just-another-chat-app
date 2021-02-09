@@ -17,14 +17,17 @@ export const Wrapper = styled.div`
 
 export const Header = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     height: 10%;
-    border-bottom: solid #adb5bd 1px;
+    padding: 1rem;
+    border-bottom: ${({ theme }) => theme.colors.borderGrey} solid 1px;
 `
 
 export const RoomName = styled.div`
-    display: flex;
+    font-weight: bold;
+    font-size: 2rem;
+    align-self: center;
+    padding-left: 1rem;
 `
 
 export const Image = styled.img`
